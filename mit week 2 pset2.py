@@ -25,7 +25,7 @@ annualInterestRate = 0.2
 #Logic
 monthlyInterestRate = annualInterestRate/12
 remBalance = balance
-minPayment =  (monthlyInterestRate*balance)//10
+minPayment =  (monthlyInterestRate*balance)//10*10
 while remBalance > 0:
     remBalance = balance
     monthlyUnpaidBalance=0
