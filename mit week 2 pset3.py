@@ -28,23 +28,21 @@ annualInterestRate = 0.2
 
 #Logic
 epsilon = 0.01
+remBalance = balance
 monthlyInterestRate = annualInterestRate/12.0
 monthlyLower= balance/12
 monthlyUpper = balance*(1+monthlyInterestRate)**12/12.0
 minPayment =  (monthlyLower+monthlyUpper)/2.0
-while True:
+while abs(remBalance)>epsilon:
     remBalance = balance
     minPayment =(monthlyLower+monthlyUpper)/2.0
     for i in range(12):
         monthlyUnpaidBalance = remBalance-minPayment
         remBalance = monthlyUnpaidBalance+(monthlyInterestRate*monthlyUnpaidBalance)
-    if remBalance>=0 and remBalance<=epsilon:
-        break
+    if remBalance>0:
+        monthlyLower=minPayment
     else:
-        if remBalance>0:
-            monthlyLower=minPayment
-        else:
-            monthlyUpper=minPayment
+        monthlyUpper=minPayment
 
     
 print("Lowest Payment: %s" %round(minPayment,2))
