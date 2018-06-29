@@ -23,26 +23,28 @@ which is okay. A summary of the required math is found below:
 '''
 
 #test case
-balance = 999999
+balance = 320000
 annualInterestRate = 0.2
 
 #Logic
-remBalance = balance
+epsilon = 0.01
 monthlyInterestRate = annualInterestRate/12.0
 monthlyLower= balance/12
-monthlyUpper = remBalance*((1+monthlyInterestRate)**12)/12.0
+monthlyUpper = balance*(1+monthlyInterestRate)**12/12.0
 minPayment =  (monthlyLower+monthlyUpper)/2.0
-while remBalance > 0:
+while True:
     remBalance = balance
-    monthlyUnpaidBalance=0
     minPayment =(monthlyLower+monthlyUpper)/2.0
     for i in range(12):
         monthlyUnpaidBalance = remBalance-minPayment
-        newBalance = monthlyUnpaidBalance+(monthlyInterestRate*monthlyUnpaidBalance)
-        remBalance=newBalance
-        if remBalance<=0:
-            print("Lowest Payment: %s" %minPayment)
-            break
+        remBalance = monthlyUnpaidBalance+(monthlyInterestRate*monthlyUnpaidBalance)
+    if remBalance>=0 and remBalance<=epsilon:
+        break
+    else:
+        if remBalance>0:
+            monthlyLower=minPayment
         else:
-            monthlyLower = minPayment
+            monthlyUpper=minPayment
+
     
+print("Lowest Payment: %s" %round(minPayment,2))
