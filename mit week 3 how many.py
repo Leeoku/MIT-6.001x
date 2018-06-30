@@ -1,4 +1,3 @@
-
 '''First, write a procedure, called how_many, which returns the sum of the number of values associated with a dictionary. For example:
 
 >>> print(how_many(animals))
@@ -25,4 +24,29 @@ def how_many(aDict):
     return count
 
 
-print(how_many(animals))
+#print(how_many(animals))
+
+'''This time, write a procedure, called biggest, which returns the key corresponding to the entry with the largest number of values associated with it. If there is more than one such entry, return any one of the matching keys.
+
+Example usage:
+
+>>> biggest(animals)
+'d'
+'''
+
+def biggest(aDict):
+    '''
+    aDict: A dictionary, where all the values are lists.
+
+    returns: The key with the largest number of values associated with it
+    '''
+    newValues = aDict.values()
+    largest = max(newValues)
+    print(largest)
+    for i in aDict:
+        if aDict[i]==largest:
+            result = i
+    return result
+biggest(animals)
+
+
