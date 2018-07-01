@@ -42,7 +42,6 @@ def biggest(aDict):
     '''
     newValues = aDict.values()
     largest = max(newValues)
-    print(largest)
     for i in aDict:
         if aDict[i]==largest:
             result = i
