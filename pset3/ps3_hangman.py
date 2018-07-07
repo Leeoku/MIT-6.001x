@@ -130,9 +130,9 @@ def hangman(secretWord):
             lettersGuessed.append(guess)
         else:
             lettersGuessed.append(guess)
-            guessesLeft-=1
             print('Good guess: '+getGuessedWord(secretWord,lettersGuessed))
             if isWordGuessed(secretWord,lettersGuessed)==True:
+                print('-'*12)
                 print('Congratulations, you won!')
                 break
     if guessesLeft<=0:

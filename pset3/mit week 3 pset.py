@@ -27,7 +27,7 @@ def getGuessedWord(secretWord, lettersGuessed):
         if i in lettersGuessed:
             currentGuess+=i
         else:
-            currentGuess+= '_'
+            currentGuess+= '_ '
     return currentGuess
 #print(getGuessedWord('apple', ['e', 'i', 'k', 'p', 'r', 's']))
 
