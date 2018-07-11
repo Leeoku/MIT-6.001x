@@ -4,8 +4,7 @@ into [1,'a','cat',2,3,'dog',4,5] (order matters).
 '''
 
 aList = [[1,'a',['cat'],2],[[[3]],'dog'],4,5]
-print(type(aList[0]))
-print(aList[0])
+
 def flatten(aList): 
     flattenedList = [] 
     for i in aList: 
@@ -13,7 +12,6 @@ def flatten(aList):
             flattenedList += flatten(i) 
         else: 
             flattenedList.append(i) 
-    print(flattenedList)
     return flattenedList 
 
 flatten(aList)
